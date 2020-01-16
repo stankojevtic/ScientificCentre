@@ -1,0 +1,68 @@
+<!-- Material form contact -->
+<div class="card">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Add reviewers and editors</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" action="#!" [formGroup]="addReviewersCreateForm" (ngSubmit)="onSubmit()">
+            <div class="col-xs-12" formArrayName="reviewers">
+                <label for="reviewer">Add Reviewers</label>
+                <div 
+                    *ngFor="let reviewerCtrl of addReviewersCreateForm.get('reviewers').controls; let i = index"
+                    [formGroupName]="i">
+                    <div>
+                        <select id="reviewer" class="form-control" formControlName="reviewerName">
+                            <option *ngFor="let reviewer of reviewersList" [value]="reviewer">{{ reviewer }}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>               
+                <div>
+                    <div>
+                        <button type="button" class="btn btn-info" (click)="onAddReviewer()">
+                            Add Reviewer
+                        </button>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+            <br><br><br>
+
+            <div class="col-xs-12" formArrayName="editors">
+                <label for="editors">Add Editors</label>
+                <div 
+                    *ngFor="let editorCtrl of addReviewersCreateForm.get('editors').controls; let j = index" 
+                    [formGroupName]="j">
+                    <div>
+                        <select id="editor" class="form-control" formControlName="editorName">
+                            <option *ngFor="let editor of editorsList" [value]="editor">{{ editor }}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>               
+                <div>
+                    <div>
+                        <button type="button" class="btn btn-info" (click)="onAddEditor()">
+                            Add Editor
+                        </button>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <br>
+            <!-- Send button -->
+            <button [disabled]="!addReviewersCreateForm.valid" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Create</button>
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form contact -->

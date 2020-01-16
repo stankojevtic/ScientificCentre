@@ -1,0 +1,47 @@
+<div *ngIf="usersWaitingApproval">
+    Users waiting for reviewer approval:
+    <table mdbTable bordered="true">
+        <thead>
+          <tr>
+            <th *ngFor="let head of usersHeadElements" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let user of usersWaitingApproval;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.city}}</td>
+            <td>{{user.country}}</td>
+            <td>{{user.vocation}}</td>
+            <td>{{user.scientificAreas}}</td>
+            <td><button type="button" class="btn btn-success" (click)="onApprove(user.id)">Approve</button></td>
+          </tr>
+        </tbody>
+      </table>  
+</div>
+<div *ngIf="magazinesWaitingReview">    
+    Magazine waiting for data verification:
+    <table mdbTable bordered="true">
+        <thead>
+          <tr>
+            <th *ngFor="let head of magazineHeadElements" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let magazine of magazinesWaitingReview;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{magazine.name}}</td>
+            <td>{{magazine.issn}}</td>
+            <td>{{magazine.isOpenAccess}}</td>
+            <td>{{magazine.scientificAreas}}</td>
+            <td>{{magazine.editors}}</td>
+            <td>{{magazine.reviewers}}</td>
+            <td>{{magazine.chiefEditor}}</td>
+            <td><button type="button" class="btn btn-success" (click)="onApproveMagazine(magazine.id)">Approve</button>
+            <button type="button" class="btn btn-danger" (click)="onDeclineMagazine(magazine.id)">Decline</button></td>
+          </tr>
+        </tbody>
+      </table>  
+</div>

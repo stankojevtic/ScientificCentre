@@ -1,0 +1,64 @@
+<!-- Material form contact -->
+<div class="card">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Correct magazine</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" action="#!" [formGroup]="magazineCorrectForm" (ngSubmit)="onSubmit()">
+
+            <!-- Name -->
+            <div class="md-form mt-3">
+                <input type="text" id="name" formControlName="name" class="form-control" placeholder="Name">
+            </div>
+
+            <!-- E-mail -->
+            <div class="md-form">
+                <input type="number" id="issn" formControlName="issn" class="form-control" placeholder="ISSN">
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="isopenaccess" formControlName="isopenaccess">
+                <label class="form-check-label" for="isopenaccess">Is open access</label>
+            </div>
+
+            <br>
+
+            <div class="col-xs-12" formArrayName="scientificAreas">
+                <label for="reviewer">Scientific areas</label>
+                <div 
+                    *ngFor="let scientificAreaCtrl of magazineCorrectForm.get('scientificAreas').controls; let i = index" 
+                    [formGroupName]="i">
+                    <div>
+                        <select id="status" class="form-control" formControlName="name">
+                            <option *ngFor="let status of scientificAreaList" [value]="status">{{ status }}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>               
+                <div>
+                    <div>
+                        <button type="button" class="btn btn-info" (click)="onAddScientificArea()">
+                            Add Scientific Area
+                        </button>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+            <br><br><br>
+
+            <!-- Send button -->
+            <button [disabled]="!magazineCorrectForm.valid" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Correct</button>
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form contact -->

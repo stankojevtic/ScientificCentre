@@ -1,0 +1,32 @@
+<html lang="en" class="full-height">
+
+<!--Main Navigation-->
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark black">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" *ngIf="userService.isUserAuthenticated() && userService.getRole() == 'Editor'" href="add-magazine">Create magazine</a></li>
+          <li class="nav-item"><a class="nav-link" *ngIf="userService.isUserAuthenticated() && userService.getRole() == 'Editor'" href="editor-tasks">My tasks</a></li>
+          <li class="nav-item"><a class="nav-link" *ngIf="userService.isUserAuthenticated() && userService.getRole() == 'Administrator'" href="admin-tasks">My tasks</a></li>
+        </ul>
+        <ul class="navbar-nav" style="float:right;">
+            <li class="nav-item"><a class="nav-link" *ngIf="!userService.isUserAuthenticated()" href="register">Register</a></li>
+            <li class="nav-item"><a class="nav-link" *ngIf="!userService.isUserAuthenticated()" href="login">Log in</a></li>
+            <li class="nav-item"><a class="nav-link" *ngIf="userService.isUserAuthenticated()" href (click)="onLogout()">Log out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+<!--Main Layout-->

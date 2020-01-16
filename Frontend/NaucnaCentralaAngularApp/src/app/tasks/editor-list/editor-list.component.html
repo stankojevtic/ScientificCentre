@@ -1,0 +1,48 @@
+<div *ngIf="addingReviewersTask">
+    Add editors and reviewers for magazine task:
+    <table mdbTable bordered="true">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let magazine of addingReviewersTask;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{magazine.name}}</td>
+            <td>{{magazine.issn}}</td>
+            <td>{{magazine.isOpenAccess}}</td>
+            <td>{{magazine.scientificAreas}}</td>
+            <td><button type="button" class="btn btn-success" (click)="onAdd(magazine.id)">Add</button></td>
+          </tr>
+        </tbody>
+      </table>  
+    <!-- <div *ngFor="let magazine of addingReviewersTask;let i = index">
+        {{i+1}}. Adding editors and reviewers for magazine: Name: {{magazine.name}}
+        <button type="button" class="btn btn-success" (click)="onAdd(magazine.id)">Add</button>
+    </div> -->
+</div>
+<div *ngIf="correctMagazineTask">    
+    Correct data for magazine:
+    <table mdbTable bordered="true">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let magazine of correctMagazineTask;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{magazine.name}}</td>
+            <td>{{magazine.issn}}</td>
+            <td>{{magazine.isOpenAccess}}</td>
+            <td>{{magazine.scientificAreas}}</td>
+            <td><button type="button" class="btn btn-success" (click)="onCorrect(magazine.id)">Correct</button></td>
+          </tr>
+        </tbody>
+      </table>  
+    <!-- <div *ngFor="let magazine of correctMagazineTask;let i = index">
+        {{i+1}}. Correct data for magazine: {{magazine.name}}
+        <button type="button" class="btn btn-success" (click)="onCorrect(magazine.id)">Correct</button>
+    </div> -->
+</div>
