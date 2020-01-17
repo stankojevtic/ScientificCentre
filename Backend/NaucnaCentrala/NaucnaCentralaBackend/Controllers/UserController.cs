@@ -37,7 +37,7 @@ namespace NaucnaCentralaBackend.Controllers
         {
             try
             {
-                _camundaExecutor.StartProcess("RegistrationProcess", null);
+                _camundaExecutor.StartProcess("RegistrationProcess", createUserModel.Username);
 
                 string taskId = _camundaExecutor.GetUnassignedTaskId("UnosPodataka");
 

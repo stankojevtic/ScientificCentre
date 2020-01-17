@@ -113,13 +113,13 @@ namespace NaucnaCentralaBackend.Services
             return null;
         }
 
-        public void StartProcess(string processId, long? userId)
+        public void StartProcess(string processId, string userId)
         {
             string content = JsonConvert.SerializeObject(new
             {
                 variables = new
                 {
-                    starter = new CamundaValueItem<string>("demo")
+                    initiator = new CamundaValueItem<string>(userId)
                 }
             });
 

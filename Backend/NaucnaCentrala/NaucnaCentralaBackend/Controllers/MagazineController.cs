@@ -31,7 +31,7 @@ namespace NaucnaCentralaBackend.Controllers
         {
             try
             {
-                _camundaExecutor.StartProcess("ProcesKreiranjaNovogCasopisa", null);
+                _camundaExecutor.StartProcess("ProcesKreiranjaNovogCasopisa", User.Identity.Name);
 
                 string taskId = _camundaExecutor.GetUnassignedTaskId("UnosenjePodatakaZaCasopis");
 
